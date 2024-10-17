@@ -1,0 +1,22 @@
+<div style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px;">
+  <h4 style="color:rgb(120,120,120); margin-bottom:4px">{{ job["title"] }}</h4>
+  <div style="display: flex; justify-content: space-between; align-items:center;">
+    <div style="display: flex; flex-direction: column;">
+      <b>Location: {{ job["location"] }}</b>
+      {% if 'salary' in job %}
+        <b>Salary: {{ job["salary"] }}</b>
+      {% endif %}
+    </div>
+    <div>
+      <button style="
+        border: none;
+        padding: 5px 10px;
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        font-size: 16px; /* Font size */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s ease;" /* Smooth transition */>Apply</button>
+    </div>
+  </div>
+</div>
