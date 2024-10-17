@@ -33,6 +33,9 @@
       margin: 0 auto;
 
     }
+    html {
+      scroll-behavior: smooth;
+    }
     .copyright{
       text-align: center;
       font-family: Roboto;
@@ -47,10 +50,11 @@
 
 
 <body>
+   {% include 'navbar.html'%}
   <div id="container">
   <h1>{{company_name}} Careers</h1>
   <img id="banner" src="https://2c950920-3c2a-4bf6-a229-b3abe8704144-00-2p4jw65disl81.spock.replit.dev/static/christin-hume-Hcfwew744z4-unsplash.jpg">
-  <h2>
+  <h2 id="about-aaron">
    About Aaron
   </h2>
   <p>This is a Aaron Career demo website, such as eCommerce platforms, chat applications, and data-driven analytics, which have strengthened my problem-solving skills and understanding of scalable software architecture. I'm eager to contribute my skills to a collaborative team and continue growing as a developer.
@@ -73,7 +77,7 @@
  
   
   
-  <div style="text-align:center"> 
+  <div style="text-align:center; margin-bottom:20px;margin-top:10px;"> 
   <button style="
       border: none;
       padding: 10px 20px;
@@ -87,11 +91,13 @@
       Contact Us
     </button>
   </div>
-    <div style="margin-top: 10px; display: block;">
+    <!-- <div style="margin-top: 10px; display: block;">
       <p class="copyright">Copyright 2024: Aaron</p>
-    </div>
+    </div> -->
+    
   
   </div>
+  <div>  {% include 'foot.html'%}</div>
 
   
   
