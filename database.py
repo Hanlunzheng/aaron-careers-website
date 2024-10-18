@@ -65,9 +65,9 @@ def add_application_db(job_id, application):
       query = text("INSERT INTO applications (job_id, name, email, phone, resume_filename) VALUES (:job_id, :name, :email, :phone, :resume_filename)")
       params = {
           'job_id': job_id,
-          'name': application['full_name'],  
+          'name': application['name'],  
           'email': application['email'],     
           'phone': application['phone'],      
-          'resume_filename': application['resume'] 
+          'resume_filename': application['resume_filename'] 
       }
       conn.execute(query, params)

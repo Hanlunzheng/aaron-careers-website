@@ -1,5 +1,5 @@
 from flask import Flask, render_template,jsonify,request
-from database import load_jobs_from_db, load_jobdetail_from_db
+from database import load_jobs_from_db, load_jobdetail_from_db, add_application_db
 from sqlalchemy import create_engine,text
 import os
 from werkzeug.utils import secure_filename
@@ -90,6 +90,9 @@ def apply_job(id):
       "phone": phone,
       "resume_filename": filename if resume else None
   }
+
+  # Call the add_application_db function to insert the data into the database
+  add_application_db(id, data)
   return render_template('application_confirm_page.html', application=data)
   
   
