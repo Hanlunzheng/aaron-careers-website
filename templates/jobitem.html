@@ -4,7 +4,7 @@
     <div style="display: flex; flex-direction: column;">
       <b>Location: {{ job["location"] }}</b>
       {% if 'salary' in job %}
-        <b>Salary: {{ job["salary"] }}</b>
+        <b>Salary: {{ job["salary"] }} {{job["currency"]}}</b>
       {% endif %}
     </div>
     <div>
