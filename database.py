@@ -49,4 +49,25 @@ def load_jobdetail_from_db(id):
         return None
     else:
         return dict(rows[0])
-    
+      
+# def add_application_db(job_id, application):
+#   with engine.connect() as conn:
+#     query = text("INSERT INTO applications (job_id, full_name, email, phone, resume) VALUES (:job_id, :full_name, :email, :phone, :resume)")
+#     params = {
+#         'job_id': job_id,
+#         'name': application['full_name'],
+#         'email': application['email'],
+#         'phone': application['phone'],
+#         'resume': application['resume']
+#     }
+def add_application_db(job_id, application):
+  with engine.connect() as conn:
+      query = text("INSERT INTO applications (job_id, name, email, phone, resume_filename) VALUES (:job_id, :name, :email, :phone, :resume_filename)")
+      params = {
+          'job_id': job_id,
+          'name': application['full_name'],  
+          'email': application['email'],     
+          'phone': application['phone'],      
+          'resume_filename': application['resume'] 
+      }
+      conn.execute(query, params)

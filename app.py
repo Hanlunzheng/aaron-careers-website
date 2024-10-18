@@ -1,6 +1,9 @@
-from flask import Flask, render_template,jsonify
+from flask import Flask, render_template,jsonify,request
 from database import load_jobs_from_db, load_jobdetail_from_db
 from sqlalchemy import create_engine,text
+import os
+from werkzeug.utils import secure_filename
+
 
 
 
@@ -53,6 +56,42 @@ def show_job(id):
     return "Page Not Found",404
   return render_template('jobpage.html',job = job)
   # return jsonify(job)
+
+
+@app.route('/job/<id>/apply', methods=['POST'])
+def apply_job(id):
+  # data = {
+  #     "name": request.form.get("name"),
+  #     "email": request.form.get("email"),
+  #     "phone": request.form.get("phone"),
+  #   "resume": request.form.get("resume")
+  # }
+  # # data = request.args
+  # return jsonify(data)
+  name = request.form.get("name")
+  email = request.form.get("email")
+  phone = request.form.get("phone")
+  resume = request.files.get("resume")  
+
+  
+  if resume:
+      
+      filename = secure_filename(resume.filename)
+      # Specify the path where you want to save the file
+      if not os.path.exists("uploads"):
+        os.makedirs("uploads")
+
+      resume.save(os.path.join("uploads", filename))
+
+  # Prepare data for response
+  data = {
+      "name": name,
+      "email": email,
+      "phone": phone,
+      "resume_filename": filename if resume else None
+  }
+  return render_template('application_confirm_page.html', application=data)
+  
   
 
 if __name__ == "__main__":

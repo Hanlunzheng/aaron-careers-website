@@ -1,0 +1,36 @@
+<!-- Application Form -->
+<div class="application-form" style="margin-top: 20px;">
+    <h3 style="text-align:center">Application Form</h3>
+    <form action="/job/{{job['id']}}/apply" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 10px;">
+        <!-- Name Input -->
+        <div>
+            <label for="name" style="font-weight: bold;">Full Name:</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <!-- Email Input -->
+        <div>
+            <label for="email" style="font-weight: bold;">Email Address:</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <!-- Phone Input -->
+        <div>
+            <label for="phone" style="font-weight: bold;">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <!-- Resume Upload -->
+        <div>
+            <label for="resume" style="font-weight: bold;">Upload Resume:</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <!-- Submit Button -->
+        <div style="text-align: center;">
+            <button type="submit" style="border: none; padding: 10px 20px; background-color: #4CAF50; color: white; font-size: 16px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+                Submit Application
+            </button>
+        </div>
+    </form>
+</div>
