@@ -66,10 +66,10 @@
 
 
 </p>
-    <h2>
+    <h2 id="open-positions">
       Open Positions
     </h2>
-    <div> {%for job in jobs%}
+    <div > {%for job in jobs%}
     {% include 'jobitem.html'%}
 
       {%endfor%}
@@ -78,7 +78,7 @@
   
   
   <div style="text-align:center; margin-bottom:20px;margin-top:10px;"> 
-  <button style="
+  <button id="contact" style="
       border: none;
       padding: 10px 20px;
       background-color: #4CAF50; /* Green background */

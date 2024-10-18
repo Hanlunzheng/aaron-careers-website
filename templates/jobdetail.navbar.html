@@ -1,0 +1,52 @@
+<style>.navbar {
+    background-color: #4CAF50; /* Green background */
+    padding: 10px 0; /* Vertical padding */
+    color: white; /* Text color */
+}
+
+.container {
+    max-width: 800px; /* Max width for the container */
+    margin: 0 auto; /* Center the container */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between brand and menu */
+    align-items: center; /* Center items vertically */
+}
+
+.navbar-brand {
+    font-size: 24px; /* Brand font size */
+    text-decoration: none; /* Remove underline */
+    color: white; /* Brand text color */
+}
+
+.navbar-menu {
+    list-style: none; /* Remove list bullets */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for menu items */
+}
+
+.navbar-menu li {
+    margin-left: 20px; /* Space between menu items */
+}
+
+.navbar-menu a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Menu item text color */
+    transition: color 0.3s; /* Transition for hover effect */
+}
+
+.navbar-menu a:hover {
+    color: #d1e0e0; /* Change color on hover */
+}
+</style>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="navbar-brand">Aaron Careers</a>
+        <ul class="navbar-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#responsibilities">Responsibilities</a></li>
+            <li><a href="#apply">Apply</a></li>
+        </ul>
+    </div>
+</nav>

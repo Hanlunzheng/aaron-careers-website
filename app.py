@@ -1,5 +1,5 @@
 from flask import Flask, render_template,jsonify
-from database import load_jobs_from_db
+from database import load_jobs_from_db, load_jobdetail_from_db
 from sqlalchemy import create_engine,text
 
 
@@ -45,6 +45,15 @@ def hello():
 def list_job():
   job_dict = load_jobs_from_db()
   return jsonify(job_dict)
+
+@app.route('/job/<id>')
+def show_job(id):
+  job = load_jobdetail_from_db(id)
+  if not job:
+    return "Page Not Found",404
+  return render_template('jobpage.html',job = job)
+  # return jsonify(job)
+  
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',debug=True)

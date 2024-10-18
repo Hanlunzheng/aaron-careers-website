@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }} - Aaron Careers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Font style */
+            margin: 0;
+            padding: 20px; /* Space around the content */
+            background-color: #f9f9f9; /* Light gray background */
+        }
+
+        h1 {
+            text-align: center; 
+            color: #333; /* Dark gray color */
+            margin-bottom: 20px; 
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+
+        h3 {
+            color: #4CAF50; /* Green color for subheadings */
+            margin-top: 20px; /* Space above subheadings */
+        }
+
+        p {
+            font-size: 16px; /* Font size */
+            line-height: 1.6;  */
+            color: #555; /* Medium gray color */
+        }
+
+        /* Container for job details */
+        .job-details {
+            max-width: 800px; /* Max width for content */
+            margin: 0 auto; /* Center the content */
+            background: white; /* White background for the content area */
+            padding: 20px; /* Space inside the content area */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        /* Add a button style */
+        .apply-button {
+            
+            display: inline-block; 
+            padding: 10px 20px; 
+            background-color: #4CAF50; 
+            color: white; 
+            font-size: 16px;
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            text-align: center; 
+            margin-top: 20px; 
+            text-decoration: none;
+            transition: background-color 0.3s ease; 
+        }
+
+        .apply-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        ul {
+            font-size: 12px;
+            list-style-type: disc; /* Change the bullet style if needed */
+            padding-left: 20px; /* Add padding to the left of the list */
+        }
+
+        li {
+            margin-bottom: 10px; /* Space between bullet points */
+        }
+    </style>
+</head>
+
+<body>
+     {% include 'jobdetail.navbar.html'%}
+    <div class="job-details">
+        <h1>{{ job.title }}</h1>
+        <h3>Location:</h3>
+        <p>{{ job.location }}</p>
+        <h3>Salary:</h3>
+        <p>{{ job.salary }}</p>
+        <h3 id="requirements">Job Requirements:</h3>
+        <ul>
+            {%for line in job.requirements.split("\n")%}
+            <li>{{line}}</li>
+            {%endfor%}
+        </ul>
+        
+        
+        <h3 id="responsibilities"">Job Responsibilities:</h3>
+        <ul>
+            {%for line in job.responsibities.split("\n")%}
+            <li>{{line}}</li>
+            {%endfor%}
+        </ul>
+    
+        <div id="apply" style="display:flex; justify-content: center; align-items:center;""><a href="" class="apply-button">Apply Now</a> </div>
+
+        
+    </div>
+</body>
+
+</html>

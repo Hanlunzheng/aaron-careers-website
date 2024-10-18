@@ -31,3 +31,22 @@ def load_jobs_from_db():
 
   # Print the list of dictionaries
   return job_dict
+
+
+def load_jobdetail_from_db(id):
+  with engine.connect() as conn:
+    params = {'val': id}
+    result = conn.execute(text("select * from jobs where id = :val"), params)
+    # rows = result.all()
+
+    # if len(rows) == 0:
+    #   return None
+    # else:
+    #   return dict(rows[0]) 
+    rows = result.mappings().all()  # This gives you a list of dictionaries
+
+    if len(rows) == 0:
+        return None
+    else:
+        return dict(rows[0])
+    
