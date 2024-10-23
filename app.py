@@ -94,6 +94,7 @@ def apply_job(id):
   # Call the add_application_db function to insert the data into the database
   add_application_db(id, data)
   return render_template('application_confirm_page.html', application=data)
+  # return jsonify(data)
   
   
 

@@ -82,7 +82,7 @@
         <h3>Location:</h3>
         <p>{{ job.location }}</p>
         <h3>Salary:</h3>
-        <p>{{ job.salary }}</p>
+        <p>${{ job.salary }}</p>
         <h3 id="requirements">Job Requirements:</h3>
         <ul>
             {%for line in job.requirements.split("\n")%}

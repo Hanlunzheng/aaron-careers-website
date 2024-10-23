@@ -53,22 +53,58 @@
    {% include 'navbar.html'%}
   <div id="container">
   <h1>{{company_name}} Careers</h1>
-  <img id="banner" src="https://2c950920-3c2a-4bf6-a229-b3abe8704144-00-2p4jw65disl81.spock.replit.dev/static/christin-hume-Hcfwew744z4-unsplash.jpg">
-  <h2 id="about-aaron">
-   About Aaron
-  </h2>
-  <p>This is a Aaron Career demo website, such as eCommerce platforms, chat applications, and data-driven analytics, which have strengthened my problem-solving skills and understanding of scalable software architecture. I'm eager to contribute my skills to a collaborative team and continue growing as a developer.
+  <img id="banner" src="../static/a.jpg">
+  
     
 
+    <h2 id="about-aaron">About Aaron</h2>
+    <p>This is a demo website showcasing Aaron's career opportunities. We specialize in eCommerce platforms, chat applications, and data-driven analytics, strengthening our team's problem-solving skills.</p>
 
+    <!-- Mission and Values Section -->
+    <h2 id="mission-values">Our Mission & Values</h2>
+    <p>At Aaron, we aim to build innovative software solutions that empower businesses. We prioritize innovation, collaboration, and a commitment to excellence.</p>
 
+    <!-- Team Section -->
+    <h2 id="team">Meet Our Team</h2>
+    <p>We are a diverse group of talented individuals committed to delivering outstanding results and fostering a culture of collaboration and growth.</p>
 
+   
 
+    <!-- <h2 id="testimonials">Employee Testimonials</h2>
+    <blockquote>
+      <p>"Working here has been an amazing experience. I am continuously challenged to grow."</p>
+      <footer>- John Smith, Senior Developer</footer>
+    </blockquote>
+ -->
 
 </p>
     <h2 id="open-positions">
       Open Positions
     </h2>
+    <div style="text-align:center; margin-bottom:20px; margin-top:10px;">
+      <input type="text" id="job-search" placeholder="Search for a job title..." style="
+        padding: 10px;
+        width: 80%;
+        max-width: 600px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;">
+      <button onclick="searchJob()" style="
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;">
+        Search
+      </button>
+    </div>
+    </div>
+    <div id="job-results" style="text-align: center; margin-top: 20px;">
+        <!-- Filtered job results will be inserted here -->
+     
+    </div>
     <div > {%for job in jobs%}
     {% include 'jobitem.html'%}
 
@@ -78,7 +114,7 @@
   
   
   <div style="text-align:center; margin-bottom:20px;margin-top:10px;"> 
-  <button id="contact" style="
+    <button id="contact" style="
       border: none;
       padding: 10px 20px;
       background-color: #4CAF50; /* Green background */
@@ -87,7 +123,8 @@
       border-radius: 5px; /* Rounded corners */
       cursor: pointer; /* Pointer cursor on hover */
       transition: background-color 0.3s ease; /* Smooth transition */
-    ">
+    "
+    onclick="window.location.href='mailto:zhenghanlun0716@gmail.com?subject=Inquiry%20about%20Aaron%20Careers';">
       Contact Us
     </button>
   </div>
@@ -99,7 +136,62 @@
   </div>
   <div>  {% include 'foot.html'%}</div>
 
+  <script>
+    // Log the jobs variable to the console
+
+    // jobs = jsonify(job_dict)
+    // console.log(jobs);
+
+    const jobs = {{ jobs | tojson }};
+    console.log(jobs);
   
+
+        function searchJob() {
+            // Get the search input value
+            const searchInput = document.getElementById('job-search').value.toLowerCase();
+
+            // Filter jobs based on the search input
+            const filteredJobs = jobs.filter(job => job.title.toLowerCase().includes(searchInput));
+
+            // Clear previous results
+            const jobContainer = document.querySelector('#job-results');
+            jobContainer.innerHTML = '';
+
+            // Display filtered jobs
+            if (filteredJobs.length > 0) {
+                filteredJobs.forEach(job => {
+                    // Create job item HTML (you can customize this according to your jobitem.html structure)
+                    const jobItem = document.createElement('div');
+                    jobItem.innerHTML = `
+                        <h3>${job.title}</h3>
+                        <p>Location: ${job.location}</p>
+                        <p>Salary: ${job.salary} ${job.currency}</p>
+                       <button class="detail-button" style="
+                         padding: 8px 12px;
+                         background-color: #4CAF50;
+                         color: white;
+                         border: none;
+                         border-radius: 5px;
+                         cursor: pointer;
+                       ">View Details</button>
+                       `;
+
+                        
+                       const detailButton = jobItem.querySelector('.detail-button');
+                       detailButton.onclick = function() {
+                       window.location.href = `/job/${job.id}`; // Navigate to job detail page
+                       };
+                     
+                    ;
+                    jobContainer.appendChild(jobItem);
+                });
+            } else {
+                jobContainer.innerHTML = '<p>No jobs found matching your search.</p>';
+            }
+        }
+    
+    
+  </script>
   
 </body>
 </html>
