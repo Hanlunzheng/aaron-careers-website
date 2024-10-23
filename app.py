@@ -83,12 +83,16 @@ def apply_job(id):
 
       resume.save(os.path.join("uploads", filename))
 
+  job = load_jobdetail_from_db(id)
+  
+
   # Prepare data for response
   data = {
       "name": name,
       "email": email,
       "phone": phone,
-      "resume_filename": filename if resume else None
+      "resume_filename": filename if resume else None,
+      "job_title": job['title'] if job else None
   }
 
   # Call the add_application_db function to insert the data into the database
